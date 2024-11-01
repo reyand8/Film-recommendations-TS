@@ -4,7 +4,7 @@ import {ApolloClient, ApolloProvider, ApolloLink, from,
   HttpLink, InMemoryCache, NormalizedCacheObject} from '@apollo/client';
 
 import theme from './assets/theme';
-import {CustomHeaders} from './types/custom-headers.interface';
+import {ICustomHeaders} from './types/custom-headers.interface';
 import { useAppContext } from './providers/appContext';
 import I18nProvider from './providers/i18n';
 import Navigation from './components/navigation';
@@ -17,7 +17,7 @@ function App() {
   const token: string | null =  localStorage.getItem('auth-token');
 
   const localeMiddleware : ApolloLink = new ApolloLink((operation, forward) => {
-    const customHeaders: CustomHeaders = operation.getContext().hasOwnProperty('headers')
+    const customHeaders: ICustomHeaders = operation.getContext().hasOwnProperty('headers')
         ? operation.getContext().headers
         : {};
     operation.setContext({
