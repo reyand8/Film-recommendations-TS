@@ -1,0 +1,95 @@
+type Query {
+    filmsByPopularity(page: Int): Films
+    filmsByFilter(filter: FilmsFilterInput): Films
+    filmsBySearchQuery(search: FilmsSearchInput): Films
+    filmsByGenre(filter: FilmsFilterInput): Films
+    filmsById(ids: [Int]): [Film]
+    genres: [Genre]
+    user: User
+}
+
+input FilmsFilterInput {
+    page: Int,
+    sortBy: String,
+    sortDirection: SORT_DIRECTION,
+    includeAdult: Boolean,
+    releaseDateGte: String,
+    releaseDateLte: String,
+    genre: Int
+}
+
+input FilmsSearchInput {
+    query: String,
+    page: Int,
+}
+
+enum SORT_DIRECTION {
+    desc,
+    asc
+}
+
+type Films {
+    page: Int!
+    totalResults: Int!
+    totalPages: Int!
+    results: [Film!]!
+}
+
+type Film {
+    id: ID!
+    title: String!
+    originalTitle: String
+    releaseDate(format: String): String!
+    posterPath: String
+    genres: [Genre]
+    adult: Boolean
+    overview: String
+    originalLanguage: String
+    backdropPath: String
+    popularity: Float
+    voteCount: Int
+    video: Boolean
+    runtime: Int
+    voteAverage: Float
+    production: [Production]
+}
+
+type Genre {
+    id: Int!
+    name: String
+}
+
+type Production {
+    iso_3166_1: String
+    name: String
+}
+
+type Mutation {
+    signUpUser(
+        email: String!
+        password: String!
+        username: String!
+    ): AuthPayload
+    signInUser(
+        email: String!,
+        password: String!
+    ): AuthPayload
+    updateUser(
+        email: String!
+        username: String!
+        selectedFilms: String
+    ): User!
+    deleteUser: Boolean!
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    selectedFilms: String
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}
