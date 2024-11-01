@@ -51,6 +51,12 @@ export interface IFilterFilmsByGenre {
     };
 }
 
+export interface ICardFilmProps {
+    film: IFilm;
+    onCardSelect?: (film: IFilm) => void;
+    isPreviewMode?: boolean;
+}
+
 export interface IFilm {
     id: string;
     title: string;
