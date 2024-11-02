@@ -62,3 +62,14 @@ export interface ICardMenuProps {
 export interface ICardSingleFilmProps {
     film: IFilm;
 }
+
+export interface IGenreFieldProps {
+    data: {
+        genres: { id: string | number; name: string }[];
+    };
+}
+
+export interface IFiltersProps {
+    onSubmit: (values: any) => void;
+    initialValues?: Record<string, any>;
+}
