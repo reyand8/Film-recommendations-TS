@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 
 import { validateSignIn, isValid } from '../validation';
-import {ISignInProps} from "../../../types/auth-props.interface";
+import {ISignInProps} from "../../../types/props.interface";
 
 const btnstyle = { margin: '8px 0' };
 
