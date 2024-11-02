@@ -35,3 +35,7 @@ export interface IUserData {
         selectedFilms: string;
     };
 }
+
+export interface IFormFilmsValues {
+    listName?: string;
+}
