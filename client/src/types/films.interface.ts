@@ -57,6 +57,11 @@ export interface ICardFilmProps {
     isPreviewMode?: boolean;
 }
 
+export interface Production {
+    iso_3166_1: string;
+    name: string;
+}
+
 export interface IFilm {
     id: string;
     title: string;
@@ -71,6 +76,7 @@ export interface IFilm {
     voteAverage: number;
     language: string;
     runtime: number;
+    production: Production[];
     productionCountries: { name: string }[];
     genres: { id: number; name: string }[];
     releaseDate: string;
