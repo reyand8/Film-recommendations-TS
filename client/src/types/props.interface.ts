@@ -73,3 +73,15 @@ export interface IFiltersProps {
     onSubmit: (values: any) => void;
     initialValues?: Record<string, any>;
 }
+
+export interface IFilterFilmsProps {
+    filter: {
+        page: number;
+    };
+    setPage: (page: number) => void;
+    selectFilm: (film: IFilm) => void;
+}
+
+export interface IPopularFilmsProps {
+    selectFilm: (film: IFilm) => void;
+}
