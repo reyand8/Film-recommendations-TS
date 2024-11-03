@@ -85,3 +85,8 @@ export interface IFilterFilmsProps {
 export interface IPopularFilmsProps {
     selectFilm: (film: IFilm) => void;
 }
+
+export interface ISortMenuProps {
+    onSubmit: (values: any) => void;
+    initialValues?: Record<string, any>;
+}

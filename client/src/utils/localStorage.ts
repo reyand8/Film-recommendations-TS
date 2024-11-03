@@ -1,4 +1,3 @@
-
 export const saveIdsToStorage = (name: string, date: string | string[]): void => {
     let arrayId: string[] = [];
 
@@ -7,7 +6,7 @@ export const saveIdsToStorage = (name: string, date: string | string[]): void =>
     }
 
     try {
-        const storedData = window.localStorage.getItem(name);
+        const storedData: string | null = window.localStorage.getItem(name);
         arrayId = storedData ? JSON.parse(storedData) : [];
     } catch (error) {
         console.error('LocalStorage error:', error);
@@ -15,7 +14,7 @@ export const saveIdsToStorage = (name: string, date: string | string[]): void =>
     }
 
     if (Array.isArray(date)) {
-        date.forEach(el => {
+        date.forEach((el: string): void => {
             if (!arrayId.includes(el)) {
                 arrayId.push(el);
             }
@@ -51,6 +50,6 @@ export const deleteIdsFromStorage = (name: string, date: string): void => {
         return;
     }
     const arrayId = JSON.parse(window.localStorage.getItem(name) || '[]');
-    const filterArray = arrayId.filter((item: string) => item !== date);
+    const filterArray = arrayId.filter((item: string): boolean => item !== date);
     window.localStorage.setItem(name, JSON.stringify(filterArray));
 };

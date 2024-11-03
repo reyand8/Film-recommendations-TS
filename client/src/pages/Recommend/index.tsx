@@ -13,8 +13,8 @@ import {IFilm, IFilmsById, IFilmIds} from '../../types/films.interface';
 
 const Recommend: React.FC = () => {
     const [searchParams] = useSearchParams();
-    const idsParam = searchParams.get('ids');
-    const ids = idsParam ? idsParam.split(',').map((id) => parseInt(id, 10)) : [];
+    const idsParam: string | null = searchParams.get('ids');
+    const ids: number[] = idsParam ? idsParam.split(',').map((id) => parseInt(id, 10)) : [];
 
     const { loading, error, data } =
         useQuery<IFilmsById, IFilmIds>(FILM_DETAILS_QUERY, {

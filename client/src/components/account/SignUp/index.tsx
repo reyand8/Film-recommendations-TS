@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 
 import { validateSignUp, isValid } from '../validation';
-import {ISignUpProps} from "../../../types/props.interface";
+import {ISignUpProps} from '../../../types/props.interface';
 
 const btnstyle = { margin: '8px 0' };
 
@@ -25,13 +25,14 @@ const TextFieldBox = styled('form')(({ theme }) => ({
 }));
 
 const SignUp: React.FC<ISignUpProps> = ({ formState, handlerChange, handleSubmit, setLogin }) => {
-    const [errors, setErrors] = useState<{ username?: string; email?: string; password?: string; general?: string }>({
+    const [errors, setErrors] =
+        useState<{ username?: string; email?: string; password?: string; general?: string }>({
         username: '',
         email: '',
         password: '',
     });
 
-    const handleApolloServerError = (error: Error) => {
+    const handleApolloServerError = (error: Error): void => {
         if (error.message.includes('Unique constraint failed on the fields: (`email`)')) {
             setErrors(prev => ({ ...prev, email: 'This email already exists' }));
         } else if (error.message.includes('Unique constraint failed on the fields: (`username`)')) {
@@ -41,7 +42,7 @@ const SignUp: React.FC<ISignUpProps> = ({ formState, handlerChange, handleSubmit
         }
     };
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         const formValidation = validateSignUp(formState);
         setErrors(formValidation);

@@ -11,7 +11,7 @@ import {ICardSingleFilmProps} from '../../../types/props.interface';
 const CardSingleFilm: React.FC<ICardSingleFilmProps> = ({ film }) => {
     const { title, overview, runtime, genres,
         adult, image, production, releaseDate, voteAverage } = film;
-    const voteCicle = voteAverage * 10;
+    const voteCicle: number = voteAverage * 10;
 
     return (
         <Box

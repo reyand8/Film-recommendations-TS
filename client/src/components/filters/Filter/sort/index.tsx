@@ -7,13 +7,10 @@ import {
     SortField,
     SubmitField,
 } from '../components';
+import {ISortMenuProps} from '../../../../types/props.interface';
 
-interface SortMenuProps {
-    onSubmit: (values: any) => void;
-    initialValues?: Record<string, any>;
-}
 
-export const SortMenu: React.FC<SortMenuProps> = ({ onSubmit, initialValues }) => {
+export const SortMenu: React.FC<ISortMenuProps> = ({ onSubmit, initialValues }) => {
     return (
         <Form
             onSubmit={onSubmit}

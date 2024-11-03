@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 
 import { validateSignIn, isValid } from '../validation';
-import {ISignInProps} from "../../../types/props.interface";
+import {ISignInProps} from '../../../types/props.interface';
 
 const btnstyle = { margin: '8px 0' };
 
@@ -25,6 +25,7 @@ const TextFieldBox = styled('form')(({ theme }) => ({
     },
 }));
 
+
 const SignIn: React.FC<ISignInProps> = ({ formState, handlerChange, handleSubmit, setLogin }) => {
     const [errors, setErrors] =
         useState<{ email?: string; password?: string; }>({
@@ -32,7 +33,7 @@ const SignIn: React.FC<ISignInProps> = ({ formState, handlerChange, handleSubmit
         password: '',
     });
 
-    const handleApolloServerError = (error: Error) => {
+    const handleApolloServerError = (error: Error): void => {
         if (error.message.includes('Invalid email or password')) {
             setErrors(prev => ({ ...prev, general: 'Invalid email or password' }));
         } else {
@@ -40,7 +41,7 @@ const SignIn: React.FC<ISignInProps> = ({ formState, handlerChange, handleSubmit
         }
     };
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         const formValidation = validateSignIn(formState);
         setErrors(formValidation);

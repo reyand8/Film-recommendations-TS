@@ -51,30 +51,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Search: React.FC = () => {
     const [searchParams] = useSearchParams();
-    const searchTitle = searchParams.get('title');
+    const searchTitle: string | null = searchParams.get('title');
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [page, setPage] = useState<number>(1);
 
     const { selectedFilms, selectFilm, deleteFilm } = useFilms();
 
-    useEffect(() => {
+    useEffect((): void => {
         setSearchQuery(searchTitle || '');
     }, [searchTitle]);
 
-    const search = { query: searchQuery, page };
+    const search: {query: string, page: number} = { query: searchQuery, page };
 
     const { loading, error, data } =
         useQuery<IFilmsBySearch>(FILMS_BY_SEARCH_QUERY, { variables: { search } });
 
-    const pagesCount = data?.filmsBySearchQuery.totalPages
+    const pagesCount: number = data?.filmsBySearchQuery.totalPages
         ? Math.min(data.filmsBySearchQuery.totalPages, 500)
         : 1;
 
-    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number) => {
+    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number): void => {
         setPage(page);
     };
 
-    const handleSearch = (value: string) => {
+    const handleSearch = (value: string): void => {
         setSearchQuery(value);
     };
 

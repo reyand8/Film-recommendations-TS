@@ -2,12 +2,12 @@ import React from 'react';
 import { Box, Grid, Pagination, Paper } from '@mui/material';
 import { useQuery } from '@apollo/client';
 
-import { CardFilm } from '../../../components';
-import DataError from '../../../components/status/DataError';
-import Loading from '../../../components/status/Loading';
-import { FILMS_BY_FILTER_QUERY } from '../../../gqlClient/quieries/queries';
-import {IFilm} from '../../../types/films.interface';
-import {IFilterFilmsProps} from '../../../types/props.interface';
+import { CardFilm } from '../index';
+import DataError from '../status/DataError';
+import Loading from '../status/Loading';
+import { FILMS_BY_FILTER_QUERY } from '../../gqlClient/quieries/queries';
+import {IFilm} from '../../types/films.interface';
+import {IFilterFilmsProps} from '../../types/props.interface';
 
 
 const FilterFilms: React.FC<IFilterFilmsProps> = ({ filter, setPage, selectFilm }) => {
@@ -20,7 +20,7 @@ const FilterFilms: React.FC<IFilterFilmsProps> = ({ filter, setPage, selectFilm 
         setPage(page);
     };
 
-    const pagesCount = data?.filmsByFilter?.totalPages
+    const pagesCount: number = data?.filmsByFilter?.totalPages
         ? Math.min(data.filmsByFilter.totalPages, 500)
         : 0;
 

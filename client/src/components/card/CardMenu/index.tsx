@@ -11,11 +11,11 @@ const CardMenu: React.FC<ICardMenuProps> = ({ children }) => {
         React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
-    const handleClick = (event: MouseEvent<HTMLElement>) => {
+    const handleClick = (event: MouseEvent<HTMLElement>): void => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleClose = (): void => {
         setAnchorEl(null);
     };
 

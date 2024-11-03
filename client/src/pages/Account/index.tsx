@@ -25,7 +25,6 @@ const Account: React.FC = () => {
         useState<IFormAccUser>({ username: '', email: '', password: '' });
 
     const [login, setLogin] = useState(false);
-    const [validForm, setValidForm] = useState(false);
     const [numberOfFilms, setNumberOfFilms] = useState<number[]>([]);
 
     const { loading, error, data } = useQuery<IUserData>(GET_USER);
@@ -78,10 +77,10 @@ const Account: React.FC = () => {
         });
     }, [data]);
 
-    const updateSelectedList = async (dataList: string[]) => {
+    const updateSelectedList = async (dataList: string[]): Promise<void> => {
         try {
             if (dataList) {
-                const newList = [...new Set(dataList)].slice(0, 20);
+                const newList: string[] = [...new Set(dataList)].slice(0, 20);
                 await updateUserList(newList);
             }
         } catch (error) {
@@ -89,8 +88,8 @@ const Account: React.FC = () => {
         }
     };
 
-    const updateUserList = async (newList: string[]) => {
-        const result = `[${newList.map(item => `'${item}'`).join(', ')}]`;
+    const updateUserList = async (newList: string[]): Promise<void> => {
+        const result: string = `[${newList.map(item => `'${item}'`).join(', ')}]`;
         try {
             await updateUser({
                 variables: {
@@ -108,21 +107,19 @@ const Account: React.FC = () => {
         return <Loading />;
     }
 
-    const handlerChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handlerChange = (e: ChangeEvent<HTMLInputElement>): void => {
         setFormState({
             ...formState,
             [e.target.name]: e.target.value,
         });
     };
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault();
         if ((e.target as HTMLFormElement).checkValidity()) {
             login ? await signUpUser() : await signInUser();
             navigate('/account');
             window.location.reload();
-        } else {
-            setValidForm(false);
         }
     };
 

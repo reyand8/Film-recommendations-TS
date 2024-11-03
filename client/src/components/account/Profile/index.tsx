@@ -18,7 +18,7 @@ import theme from '../../../assets/theme';
 import { DELETE_USER, UPDATE_USER } from '../../../gqlClient/mutations/mutations';
 import { AUTH_TOKEN } from '../../../common/const';
 import ConfirmDelete from '../../status/ConfirmDeleteAccount';
-import {IProfileProps} from "../../../types/user.interface";
+import {IProfileProps} from '../../../types/user.interface';
 
 
 const profileStyle = { padding: 20, minHeight: '58vh', maxWidth: 660, margin: '60px auto' };
@@ -64,7 +64,7 @@ const Profile: React.FC<IProfileProps> = ({ data, numberOfFilms }) => {
         }
     }, [numberOfFilms]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
         setEditForm({
             ...editForm,
@@ -81,7 +81,7 @@ const Profile: React.FC<IProfileProps> = ({ data, numberOfFilms }) => {
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         try {
             await updateUser({
@@ -95,7 +95,7 @@ const Profile: React.FC<IProfileProps> = ({ data, numberOfFilms }) => {
         }
     };
 
-    const onLogOutClick = () => {
+    const onLogOutClick = (): void => {
         localStorage.removeItem(AUTH_TOKEN);
         navigate('/');
     };

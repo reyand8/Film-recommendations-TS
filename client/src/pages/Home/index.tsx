@@ -9,8 +9,8 @@ import {useFilms} from '../../hooks/useFilms';
 import { useAppContext} from '../../providers/appContext';
 import {FILM_DETAILS_QUERY} from '../../gqlClient/quieries/queries';
 import {IFilterFilms} from '../../types/films.interface';
-import PopularFilms from './components/PopularFilms';
-import FilterFilms from './components/FilterFilms';
+import PopularFilms from '../../components/home/PopularFilms';
+import FilterFilms from '../../components/home/FilterFilms';
 import {SelectedFilmsSection} from '../../components';
 
 

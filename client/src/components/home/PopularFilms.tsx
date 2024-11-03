@@ -3,12 +3,12 @@ import { Box, Grid, Pagination } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { useQuery } from '@apollo/client';
 
-import { CardFilm } from '../../../components';
-import Loading from '../../../components/status/Loading';
-import DataError from '../../../components/status/DataError';
-import { FILMS_BY_POPULARITY_QUERY } from '../../../gqlClient/quieries/queries';
-import {IFilmsByPopularity} from '../../../types/films.interface';
-import {IPopularFilmsProps} from '../../../types/props.interface';
+import { CardFilm } from '../index';
+import Loading from '../status/Loading';
+import DataError from '../status/DataError';
+import { FILMS_BY_POPULARITY_QUERY } from '../../gqlClient/quieries/queries';
+import {IFilmsByPopularity} from '../../types/films.interface';
+import {IPopularFilmsProps} from '../../types/props.interface';
 
 
 const PopularFilms: React.FC<IPopularFilmsProps> = ({ selectFilm }) => {
@@ -18,7 +18,7 @@ const PopularFilms: React.FC<IPopularFilmsProps> = ({ selectFilm }) => {
         variables: { page },
     });
 
-    const paginationHandler = (_event: React.ChangeEvent<unknown>, page: number) => {
+    const paginationHandler = (_event: React.ChangeEvent<unknown>, page: number): void => {
         setPage(page);
     };
 

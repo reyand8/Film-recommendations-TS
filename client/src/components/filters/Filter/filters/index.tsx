@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-import {GENRES_QUERY} from "../../../../gqlClient/quieries/queries"
+import {GENRES_QUERY} from '../../../../gqlClient/quieries/queries'
 import {
     SortField, SortDirectionField,
     AdultField, ReleaseDateFrom,

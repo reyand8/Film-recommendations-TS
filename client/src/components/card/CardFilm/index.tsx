@@ -46,7 +46,7 @@ const PlusIcon = styled(Box)(({ theme }) => ({
 
 export const CardFilm: React.FC< ICardFilmProps> = ({ film, onCardSelect, isPreviewMode = false }) => {
     const { id, title, image, releaseDate, adult, voteAverage } = film;
-    const voteCicle = voteAverage * 10;
+    const voteCicle: number = voteAverage * 10;
 
     return (
         <Card sx={{ maxWidth: 250, height: '460px', position: 'relative' }}>

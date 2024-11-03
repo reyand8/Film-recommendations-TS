@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {FormattedMessage} from "react-intl";
-
 import {useQuery} from '@apollo/client';
 
 import { alpha, AppBar, Box, Button, Drawer, Fade, Grid,
@@ -96,10 +95,10 @@ const Navigation: React.FC = () => {
 
     const { state, dispatch } = useAppContext();
 
-    const open = Boolean(anchorEl);
+    const open: boolean = Boolean(anchorEl);
 
     useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
+        function handleClickOutside(event: MouseEvent): void {
             if (searchResultRef.current && !searchResultRef.current.contains(event.target as Node)) {
                 setSearchValue('');
             }

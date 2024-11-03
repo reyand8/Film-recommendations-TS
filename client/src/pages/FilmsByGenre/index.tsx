@@ -19,7 +19,7 @@ const FilmsByGenre: React.FC = () => {
     const { filter, setFilterFields, setFilter, setPage } = useFilters();
     const { selectedFilms, selectFilm, deleteFilm } = useFilms();
     const [openSorting, setOpenSorting] = useState<boolean>(false);
-    const { id } = useParams<{ id: string }>(); // `id` передается как строка
+    const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
         setFilterFields({ ...filter, genre: Number(id) });
@@ -31,11 +31,11 @@ const FilmsByGenre: React.FC = () => {
         { variables: { filter } }
     );
 
-    const onSubmit = (data: IFilterFilmsByGenre['filter']) => {
+    const onSubmit = (data: IFilterFilmsByGenre['filter']): void => {
         setFilter({ ...data, genre: Number(id) });
     };
 
-    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number) => {
+    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number): void => {
         setPage(page);
     };
 
@@ -43,7 +43,7 @@ const FilmsByGenre: React.FC = () => {
         (data.filmsByGenre.totalPages <= 500 ? data.filmsByGenre.totalPages : 500) :
         0;
 
-    const sortMenu = () => {
+    const sortMenu = (): void => {
         setOpenSorting(!openSorting);
     };
 
