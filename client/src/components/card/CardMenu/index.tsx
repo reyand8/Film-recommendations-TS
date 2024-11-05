@@ -9,7 +9,7 @@ import {ICardMenuProps} from '../../../types/props.interface';
 const CardMenu: React.FC<ICardMenuProps> = ({ children }) => {
     const [anchorEl, setAnchorEl] =
         React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+    const open: boolean = Boolean(anchorEl);
 
     const handleClick = (event: MouseEvent<HTMLElement>): void => {
         setAnchorEl(event.currentTarget);

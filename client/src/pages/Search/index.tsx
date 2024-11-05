@@ -5,7 +5,6 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@apollo/client';
 
-
 import Loading from '../../components/status/Loading';
 import DataError from '../../components/status/DataError';
 import { CardFilm, SelectedFilmsSection } from '../../components';

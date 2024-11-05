@@ -6,9 +6,10 @@ import {IFilm} from '../../types/films.interface';
 
 export const useFilms = () => {
     const [selectedFilms, setSelectedFilms] = useState<IFilm[]>([]);
+
     const selectFilm = useCallback((film: IFilm): void => {
         const length: number = selectedFilms.length;
-        const isNewFilm: boolean = !selectedFilms.find(({ id }) => id === film.id);
+        const isNewFilm: boolean = !selectedFilms.find(({ id }): boolean => id === film.id);
         if (isNewFilm && length < MAX_SELECTED_FILMS) {
             setSelectedFilms([...selectedFilms, film]);
             setLocalStorageFilms(film.id);

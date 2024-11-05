@@ -15,7 +15,7 @@ const FilterFilms: React.FC<IFilterFilmsProps> = ({ filter, setPage, selectFilm 
         variables: { filter },
     });
 
-    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number) => {
+    const paginationHandler = (event: React.ChangeEvent<unknown>, page: number): void => {
         event.preventDefault();
         setPage(page);
     };

@@ -14,6 +14,7 @@ import {IFilm, IFilmsById, IFilmIds} from '../../types/films.interface';
 const Recommend: React.FC = () => {
     const [searchParams] = useSearchParams();
     const idsParam: string | null = searchParams.get('ids');
+    const titleParam: string | null = searchParams.get('title');
     const ids: number[] = idsParam ? idsParam.split(',').map((id) => parseInt(id, 10)) : [];
 
     const { loading, error, data } =
@@ -32,7 +33,7 @@ const Recommend: React.FC = () => {
     return (
         <Box sx={{ height: '100%', marginBottom: '40px' }}>
             <Typography sx={{ my: 4 }} variant="h2" component="h1" gutterBottom>
-                {searchParams.get('title')}
+                {titleParam}
             </Typography>
             {data?.filmsById && (
                 <Grid container spacing={3}>

@@ -24,6 +24,7 @@ const TextFieldBox = styled('form')(({ theme }) => ({
     },
 }));
 
+
 const SignUp: React.FC<ISignUpProps> = ({ formState, handlerChange, handleSubmit, setLogin }) => {
     const [errors, setErrors] =
         useState<{ username?: string; email?: string; password?: string; general?: string }>({
@@ -44,7 +45,7 @@ const SignUp: React.FC<ISignUpProps> = ({ formState, handlerChange, handleSubmit
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-        const formValidation = validateSignUp(formState);
+        const formValidation: Object = validateSignUp(formState);
         setErrors(formValidation);
         if (isValid(formValidation)) {
             try {

@@ -39,7 +39,7 @@ const FilmsByGenre: React.FC = () => {
         setPage(page);
     };
 
-    const pagesCount = data && data.filmsByGenre ?
+    const pagesCount: number = data && data.filmsByGenre ?
         (data.filmsByGenre.totalPages <= 500 ? data.filmsByGenre.totalPages : 500) :
         0;
 

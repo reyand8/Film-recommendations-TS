@@ -4,6 +4,7 @@ import {getFromStorage} from '../../utils/localStorage';
 import {LOCALES, STORAGE_LOCALE_KEY, STORAGE_SELECTED_FILMS_KEY} from '../../common/const';
 import {IDefaultContextType} from '../../types/app-context-default.interface';
 
+
 export const useDefaultContext = (): IDefaultContextType => {
     const [ searchParams ] = useSearchParams();
     return {

@@ -22,7 +22,7 @@ const PopularFilms: React.FC<IPopularFilmsProps> = ({ selectFilm }) => {
         setPage(page);
     };
 
-    const pagesCount = data?.filmsByPopularity?.totalPages
+    const pagesCount: number = data?.filmsByPopularity?.totalPages
         ? Math.min(data.filmsByPopularity.totalPages, 500)
         : 1;
 
